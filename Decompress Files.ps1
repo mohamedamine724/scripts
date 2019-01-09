@@ -1,19 +1,19 @@
-﻿# Primer de tot definim els tipus de compressió..
+﻿# First of all we need to specify the compress types
 $tipus = @("*.zip", "*.rar")
 
-#Realitzem el bucle per provar els diferents tipos (en aquest cas farà 2 voltes perquè en la array tenim 2 tipus)
+# We perform the loop to find the different types.
 foreach ($tipo in $tipus)
 {
-    #Aquesta línia busca els fitxers comprimits.
+    # This line find all the zips files.
     $Zips = Get-ChildItem -filter "$tipo" -path "C:\Users\DAP Informàtica\Desktop\hola" -Recurse
 
-    #Definim la ruta de destí.
+    # Destination folder
     $Destination = 'C:\Users\DAP Informàtica\Desktop\hola'
 
-    #Definim la ruta del programa WinRAR.
+    #WinRAR path.
     $WinRar = "C:\Program Files\WinRAR\winrar.exe"
 
-    #Aquest procés descomprimeix els fitxers.
+    #Decompress process
     foreach ($zip in $Zips)
     {
         &$Winrar x $zip.FullName $Destination
